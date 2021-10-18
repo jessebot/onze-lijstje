@@ -1,6 +1,8 @@
 {% include('header.html') %}
 <div id='container' class="d-flex align-items-center justify-content-center vh-100">
-    <form action="/grocery-add" method="post">
+  <div class="row">
+    <div class="col-6">
+    <form action="/" method="post">
       <div class="form-row align-items-center">
         <!-- to be added in later
         <div class="col-md-5">
@@ -11,10 +13,10 @@
                data-toggle="tooltip"
                data-placement="bottom" 
                data-original-title="Grocery Monster">
-             </div> -->
-        <div class="form-group col-md-6">
+        </div> -->
+        <div class="form-group col-6">
           <label for="inputGrocery" class="sr-only mb-auto">
-            Submit a food name, and I shall store it for you and do some other stuff in the future, probably.
+            <h3>Submit a food name, and I shall store it for you and do some other stuff in the future, probably.</h3>
           </label>
           <br></br>
           <input type="text"
@@ -22,19 +24,24 @@
                  id="inputGrocery"
                  name="inputGrocery"
                  placeholder="Grocery Item Name">
+          <br></br>
           <button type="submit" class="btn btn-primary btn-sm mb-2">
             Submit
           </button>
         </div>
       </div>
     </form>
-    <br></br>
+  </div> <!-- col -->
+    <div class="col-6">
     <h2>Current Grocery List</h2>
-    <ul>
-    {% for grocery in groceries: %}
-      <li>{{ country }}</li>
-    {% endfor %}
-    </ul>
-
+    <br>
+      <ul>
+      {% for grocery in groceries: %}
+        <li>{{ grocery.name }}</li>
+      {% endfor %}
+      </ul>
+    </br>
+  </div> <!-- col -->
+  </div> <!-- row -->
 </div> <!-- base container -->
 {% include('footer.html') %}

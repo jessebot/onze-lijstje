@@ -18,10 +18,10 @@ app = Flask(__name__)
 def grocery_submit():
     if request.method == 'POST':
         # get grocery from post
-        inputgrocery = request.forms.get('inputGrocery')
-        log.info("received grocery name: {0}".format(inputGrocery))
+        grocery = request.form.get('inputGrocery')
+        log.info(f"received grocery name: {grocery}")
         # add new grocery to db
-        add_new_grocery = groceries_db.add_new_grocery(inputGrocery)
+        add_new_grocery = groceries_db.add_new_grocery(grocery)
 
     # run this regardless of post success
     all_groceries = groceries_db.get_all_groceries()
