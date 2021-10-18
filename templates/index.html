@@ -1,4 +1,32 @@
 {% include('header.html') %}
 <div id='container' class="d-flex align-items-center justify-content-center vh-100">
-</div>
+    <form action="/grocery-add" method="post">
+      <div class="form-row align-items-center">
+        <!-- to be added in later
+        <div class="col-md-5">
+          <img class="img-responsive img-rounded center-block main-img"
+               src="/static/patrick_howdy.png"
+               alt="Grocery Monster >:3"
+               style="height:250px;" 
+               data-toggle="tooltip"
+               data-placement="bottom" 
+               data-original-title="Grocery Monster">
+             </div> -->
+        <div class="form-group col-md-6">
+          <label for="inputGrocery" class="sr-only mb-auto">
+            Submit a food name, and I shall store it for you and do some other stuff in the future, probably.
+          </label>
+          <br></br>
+          <input type="text"
+                 class="form-control"
+                 id="inputGrocery"
+                 name="inputGrocery"
+                 placeholder="Grocery Item Name">
+          <button type="submit" class="btn btn-primary btn-sm mb-2">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+</div> <!-- base container -->
 {% include('footer.html') %}
