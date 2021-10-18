@@ -28,5 +28,13 @@
         </div>
       </div>
     </form>
+    <br></br>
+    <h2>Current Grocery List</h2>
+    <ul>
+    {% for grocery in groceries: %}
+      <li>{{ country }}</li>
+    {% endfor %}
+    </ul>
+
 </div> <!-- base container -->
 {% include('footer.html') %}

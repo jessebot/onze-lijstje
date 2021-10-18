@@ -2,6 +2,8 @@
 # by jesse
 from flask import Flask
 from flask import render_template
+from flask import request
+import groceries_db
 import logging as log
 import os
 import sys
@@ -12,13 +14,19 @@ log.info("logging config loaded")
 app = Flask(__name__)
 
 
-@app.route("/")
-def welcome():
-    """
-    defaults to sad patrick because I don't know what to put here yet
-    """
-    log.info("Reached index")
-    return render_template('index.html')
+@app.route("/", methods=['POST', 'GET'])
+def grocery_submit():
+    if request.method == 'POST':
+        # get grocery from post
+        inputgrocery = request.forms.get('inputGrocery')
+        log.info("received grocery name: {0}".format(inputGrocery))
+        # add new grocery to db
+        add_new_grocery = groceries_db.add_new_grocery(inputGrocery)
+
+    # run this regardless of post success
+    all_groceries = groceries_db.get_all_groceries()
+    log.info("received grocery collection response: {0}".format(all_groceries))
+    return render_template('index.html', groceries=all_groceries)
 
 
 @app.route("/about")
